@@ -1,16 +1,13 @@
 import React from 'react'
-import {
-  createAppContainer,
-  createSwitchNavigator,
-  createStackNavigator,
-  createBottomTabNavigator,
-} from 'react-navigation'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 import SignupScreen from './src/screens/SignupScreen'
 import SigninScreen from './src/screens/SigninScreen'
-import TrackListScreen from './src/screens/tracklistScreen'
+import TrackListScreen from './src/screens/TrackListScreen'
 import TrackDetailScreen from './src/screens/TrackDetailScreen'
 import TrackCreateScreen from './src/screens/TrackCreateScreen'
-import AccountScreen from './src/screens/accountSreen'
+import AccountScreen from './src/screens/AccountSreen'
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
