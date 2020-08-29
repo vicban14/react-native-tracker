@@ -13,22 +13,23 @@ const AuthForm = ({ headerText, errorMessage, submitButtonText, onSubmit }) => {
       <Spacer>
         <Text h3>{headerText}</Text>
       </Spacer>
-      <Input
-        label='Email'
-        value={email}
-        onChangeText={(newEmail) => setEmail(newEmail)}
-        autoCapitalize='none'
-        autoCorrect={false}
-      />
-      <Spacer />
-      <Input
-        secureTextEntry
-        label='Password'
-        value={password}
-        onChangeText={(newPassword) => setPassword(newPassword)}
-        autoCapitalize='none'
-        autoCorrect={false}
-      />
+      <Spacer>
+        <Input
+          label='Email'
+          value={email}
+          onChangeText={(newEmail) => setEmail(newEmail)}
+          autoCapitalize='none'
+          autoCorrect={false}
+        />
+        <Input
+          secureTextEntry
+          label='Password'
+          value={password}
+          onChangeText={(newPassword) => setPassword(newPassword)}
+          autoCapitalize='none'
+          autoCorrect={false}
+        />
+      </Spacer>
       {errorMessage ? (
         <Text style={styles.errorMessage}>{errorMessage}</Text>
       ) : null}
@@ -40,10 +41,6 @@ const AuthForm = ({ headerText, errorMessage, submitButtonText, onSubmit }) => {
           }}
         />
       </Spacer>
-      <NavLink
-        linkText='Already have an account? Sign in instead.'
-        routeName='Signin'
-      />
     </>
   )
 }
