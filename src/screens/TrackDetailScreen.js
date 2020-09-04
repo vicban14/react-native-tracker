@@ -1,12 +1,8 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 
 const TrackDetailScreen = () => {
-  return (
-    <View>
-      <Text>Track Detail Screen</Text>
-    </View>
-  )
+  return <Text style={{ fontSize: 48 }}>TrackDetailScreen</Text>
 }
 
 const styles = StyleSheet.create({})

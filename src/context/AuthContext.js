@@ -2,7 +2,6 @@ import { AsyncStorage } from 'react-native'
 import createDataContext from './createDataContext'
 import trackerApi from '../api/tracker'
 import { navigate } from '../navigationRef'
-import tracker from '../api/tracker'
 
 const authReducer = (state, action) => {
   if (action.type === 'add_error') {
@@ -23,8 +22,12 @@ const tryLocalSignin = (dispatch) => async () => {
     dispatch({ type: 'signin', payload: token })
     navigate('TrackList')
   } else {
-    navigate('loginFlow')
+    navigate('Signup')
   }
+}
+
+const clearErrorMessage = (dispatch) => () => {
+  dispatch({ type: 'clear_error_message' })
 }
 
 const signup = (dispatch) => async ({ email, password }) => {
@@ -37,7 +40,7 @@ const signup = (dispatch) => async ({ email, password }) => {
   } catch (err) {
     dispatch({
       type: 'add_error',
-      payload: 'Something went wrong with Sign Up.',
+      payload: 'Something went wrong with sign up',
     })
   }
 }
@@ -51,13 +54,9 @@ const signin = (dispatch) => async ({ email, password }) => {
   } catch (err) {
     dispatch({
       type: 'add_error',
-      payload: 'Something went wrong with Sign In.',
+      payload: 'Something went wrong with sign in',
     })
   }
-}
-
-const clearErrorMessage = (dispatch) => () => {
-  return dispatch({ type: 'clearErrorMessage' })
 }
 
 const signout = (dispatch) => async () => {
@@ -68,6 +67,6 @@ const signout = (dispatch) => async () => {
 
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signup, signin, signout, clearErrorMessage, tryLocalSignin },
-  { token: null, errMessage: '' }
+  { signin, signout, signup, clearErrorMessage, tryLocalSignin },
+  { token: null, errorMessage: '' }
 )
