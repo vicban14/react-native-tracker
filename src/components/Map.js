@@ -8,9 +8,10 @@ const Map = () => {
     state: { currentLocation },
   } = useContext(LocationContext)
 
-  if (currentLocation) {
+  if (!currentLocation) {
     return <ActivityIndicator size='large' style={{ marginTop: 200 }} />
   }
+
   return (
     <MapView
       style={styles.map}
@@ -24,7 +25,7 @@ const Map = () => {
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
       }}
-    ></MapView>
+    />
   )
 }
 
