@@ -1,19 +1,22 @@
 import createDataContext from './createDataContext'
 
 const locationReducer = (state, action) => {
-  if (action.type === 'add_current_location')
-    return { ...state, currentLocation: action.payload }
-  else if (action.type === 'start_recording')
-    return { ...state, recording: true }
-  else if (action.type === 'stop_recording')
-    return { ...state, recording: false }
-  else if (action.type === 'add_location')
-    return { ...state, locations: [...state.locations, action.payload] }
-  else if (action.type === 'change_name')
-    return { ...state, name: action.payload }
-  else if (action.type === 'reset') return { ...state, name: '', locations: [] }
-
-  return state
+  switch (action.type) {
+    case 'add_current_location':
+      return { ...state, currentLocation: action.payload }
+    case 'start_recording':
+      return { ...state, recording: true }
+    case 'stop_recording':
+      return { ...state, recording: false }
+    case 'add_location':
+      return { ...state, locations: [...state.locations, action.payload] }
+    case 'change_name':
+      return { ...state, name: action.payload }
+    case 'reset':
+      return { ...state, name: '', locations: [] }
+    default:
+      return state
+  }
 }
 
 const changeName = (dispatch) => (name) => {
